@@ -1,0 +1,74 @@
+.navbar-parent-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    padding: 10px;
+    margin-bottom: 1rem;
+    background: #000;
+    color: aliceblue;
+}
+
+.logo-part {
+    width: 20%;
+}
+
+.logo-part img {
+    width: 15%;
+    cursor: pointer;
+}
+
+.links-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+}
+
+.page-links {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 16px ;
+    margin-right: 3rem;
+}
+
+.page-links:hover {
+    color: greenyellow;
+}
+
+.serach {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.serach input {
+    width: 100%;
+    font-size: 16px;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.serach img {
+    width: 7%;
+    margin-left: 10px;
+}
+
+.serach img:hover {
+    width: 8%;
+    cursor: pointer;
+}
+
+.page-links img {
+    width: 3rem;
+    cursor: pointer;
+}
