@@ -72,3 +72,12 @@
     top: -3px;
     margin-right: 10px;
 }
+
+.filtered{
+    margin-top: 2rem;
+}
+
+.filtered input {
+    padding: 10px;
+    font-size: 16px;
+}

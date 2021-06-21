@@ -1,12 +1,55 @@
 import React , {useContext, useEffect, useState} from 'react';
 import './AllGrantedJobs.css';
 import Card from '../Card/Card';
-import { AllGrantedJobsContext } from '../../App';
+import { AllGrantedJobsContext, SearchedItemContext } from '../../App';
 
 const AllGrantedJobs = () => {
 
     const allMainJobs = useContext(AllGrantedJobsContext);
-    // console.log(allMainJobs[0].length)
+
+    const searched_Item = useContext(SearchedItemContext)
+    const [itemSearched , setItemSearched] = useState([]); 
+    
+    const setUpSearchedItem = () => {
+        if(searched_Item[0].length > 0) {
+            setItemSearched(searched_Item[0])
+            alert("found "+ searched_Item[0].length + " matched posts")
+        }
+    }
+
+    useEffect(()=> {
+        setUpSearchedItem()
+    }, [searched_Item[0]])
+
+    const [grantedPostArray , setGrantedPostArray] = useState([])
+    const setGrantedPosts = () => {
+        if(allMainJobs[0].length > 0) {
+            setGrantedPostArray(allMainJobs[0])
+        }
+    }
+
+    const [val,setVal] = useState('');
+
+    let matches;
+    const searchForItem = () => {
+        matches = [];
+            for(let i = 0; i < grantedPostArray.length; i++) {
+                console.log(grantedPostArray[i].post.tags);
+                if(grantedPostArray[i].post.tags === val) {
+                    matches.push(grantedPostArray[i])
+                }
+            }
+        
+        if(matches.length === 0) {
+            alert('Sorry no such job found by the tag of ' + val);
+            searched_Item[1]([])
+        } else {
+            if(typeof(matches[0].post) === null) {
+                searchForItem()
+            }
+            searched_Item[1](matches)
+        }
+    }
         
     const [howManyCardsInOnePages , setHowManyCardsInOnePages] = useState(20);
     const [newArrays, setNewArrays] = useState(allMainJobs[0]);
@@ -61,6 +104,7 @@ const AllGrantedJobs = () => {
 
     useEffect(()=> {
         settingNewArrays()
+        setGrantedPosts()
     }, [allMainJobs[0]])
 
     useEffect(()=>{
@@ -80,6 +124,11 @@ const AllGrantedJobs = () => {
     return (
         <div className="allowed-1all-job-box-main-div">
             <h2>All Jobs Granted By Admin</h2>
+            <div className="filtered">
+                <strong>Tag : </strong>
+                <input type="text" onChange={(e)=>{setVal(e.target.value)}} />
+                <button  onClick={()=>{searchForItem()}}>Filter</button>
+            </div>
             <div className="allowed-1all-job-boxes">
                 {
                     newArrays.length >0 &&

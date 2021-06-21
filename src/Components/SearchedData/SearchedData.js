@@ -5,7 +5,6 @@ import './SearchedData.css'
 
 const SearchedData = () => {
     const searched_Item = useContext(SearchedItemContext)
-
     const [itemSearched , setItemSearched] = useState([]); 
     const setUpSearchedItem = () => {
         if(searched_Item[0].length > 0) {
@@ -15,7 +14,6 @@ const SearchedData = () => {
 
     const resetAll = () => {
         searched_Item[1]([]);
-
     }
 
     useEffect(()=> {
@@ -28,7 +26,7 @@ const SearchedData = () => {
                 {
                     itemSearched.map(item =>{
                         return(
-                            <Card data={[item.post , 'not admin', item._id]} />
+                            <Card data={[item.post , 'admin', item._id]} />
                         )
                     })
                 }
