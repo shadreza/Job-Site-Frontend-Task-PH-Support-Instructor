@@ -69,7 +69,7 @@ const Card = (props) => {
                 {
                     fromWho !== 'admin' ? 
                         <div className="btn">
-                            <button id="btn-grant" onClick={() =>{grantToPost("http://localhost:5055/addMainJobs")}}>Grant Post</button>
+                            <button id="btn-grant" onClick={() =>{grantToPost("https://fierce-cove-21299.herokuapp.com/addMainJobs")}}>Grant Post</button>
                             <button id="btn-remove" onClick={() =>{removeFromPosting()}}>Delete Post</button>
                         </div>
                         :

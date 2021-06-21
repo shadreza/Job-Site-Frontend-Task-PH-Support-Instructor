@@ -7,8 +7,6 @@ import AllGrantedJobs from './Components/AllGrantedJobs/AllGrantedJobs';
 import AllJobBox from './Components/AllJobBox/AllJobBox';
 import Navbar from './Components/NavBar/Navbar';
 import LogIn from './Components/LogIn/LogIn';
-// import SignUp from './Components/SignUp/SignUp';
-import User from './Components/User/User';
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -34,7 +32,7 @@ function App() {
   const [allUser, setAllUser] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5055/users')
+    fetch('https://fierce-cove-21299.herokuapp.com/users')
     .then(res=>res.json())
     .then(data => {
       setAllUser(data);
@@ -43,7 +41,7 @@ function App() {
 
   const [allGrantedJobs, setAllGrantedJobs] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5055/main-jobs')
+    fetch('https://fierce-cove-21299.herokuapp.com/main-jobs')
     .then(res=>res.json())
     .then(data => {
       setAllGrantedJobs(data);
@@ -52,7 +50,7 @@ function App() {
 
   const [allJobs, setAllJobs] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5055/jobs')
+    fetch('https://fierce-cove-21299.herokuapp.com/jobs')
     .then(res=>res.json())
     .then(data => {
       setAllJobs(data);
@@ -74,8 +72,7 @@ function App() {
             <Route path="/allPostedPosts" component={AllJobBox} />
             <Route path="/postByEmployee" component={AddingJobPost} />
             <Route path="/login" component={LogIn} />
-            <Route path="/profile" component={User} />
-            {/* <Route path="/signup" component={SignUp} /> */}
+            <Route path="/profile" component={AllJobBox} />
             <Route path="/" component={Homepage} />
           </Switch>
           </AllUserContext.Provider>

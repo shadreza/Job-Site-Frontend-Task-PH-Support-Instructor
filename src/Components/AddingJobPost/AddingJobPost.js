@@ -54,7 +54,7 @@ const AddingJobPost = () => {
                 console.log(post);
                 //   const url = "https://fierce-lowlands-85167.herokuapp.com/addCourse";
                 axios
-                .post("http://localhost:5055/addJobs", {post})
+                .post("https://fierce-cove-21299.herokuapp.com/addJobs", {post})
                 .catch(e=>{
                     alert("Post Could Not be Postd");
                 })
