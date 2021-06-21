@@ -1,4 +1,4 @@
-import React , {useContext , useEffect, useState} from 'react';
+import React , {useContext, useEffect, useState} from 'react';
 import './AllJobBox.css';
 
 import image from '../Images/dummy-person.svg';
@@ -8,12 +8,22 @@ import { AllJobsContext } from '../../App';
 const AllJobBox = () => {
 
     const allJobs = useContext(AllJobsContext);
-    let array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68];
-    let oneCard = [image , "Front End Junior Web Developer", "Internship", "This is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the descriptionThis is the description", 1500.00, "1 years Experience", "Remote", ["Go For It!","Learn More"]];
     const [howManyCardsInOnePage , setHowManyCardsInOnePage] = useState(20);
-    let newArray = array;
-    const [totalPages , setTotalPages] = useState(Math.ceil((array.length)/howManyCardsInOnePage))
+    const [newArray, setNewArray] = useState(allJobs[0]);
+    const [totalPages , setTotalPages] = useState(Math.ceil((allJobs[0].length)/howManyCardsInOnePage))
     const [pageNumber , setPageNumber] = useState(1)
+
+    const settingTotalPage = () => {
+        if(allJobs[0].length > 0) {
+            setTotalPages(Math.ceil((allJobs[0].length)/howManyCardsInOnePage))
+        }        
+    }
+
+    const settingNewArray = () => {
+            setNewArray(allJobs[0])
+            const arr = allJobs[0]
+            setNewArray(arr.slice(((pageNumber-1)*howManyCardsInOnePage) , (pageNumber*howManyCardsInOnePage)))
+    }
 
     const setCards = (pageNo) => {
         if (isNaN(pageNo)) {
@@ -28,10 +38,12 @@ const AllJobBox = () => {
             setPageNumber(pageNo);
             document.getElementById('input-page-no').value = pageNo;
         }
-        newArray = array;
-        newArray = newArray.slice(((pageNumber-1)*howManyCardsInOnePage) , (pageNumber*howManyCardsInOnePage));
-        allJobs[1](newArray)
+        if(allJobs[0].length > 0) {
+            settingNewArray()   
+        }     
     }
+
+    
 
     const setCardPerPage = (cardsCount) => {
         if(isNaN(cardsCount)) {
@@ -43,16 +55,25 @@ const AllJobBox = () => {
             setHowManyCardsInOnePage(cardsCount);
             document.getElementById('input-card-per-page').value = cardsCount;
         }
-
-        setTotalPages(Math.ceil((array.length)/howManyCardsInOnePage))
+        settingTotalPage()
         setCards(pageNumber)
     }
 
+    useEffect(()=> {
+        settingNewArray()
+    }, [allJobs[0]])
+
+    useEffect(()=>{
+        if(pageNumber>=totalPages){
+            setCards(pageNumber)
+        }
+    }, [pageNumber])
+
     useEffect(() =>{
-        allJobs[1](array)
-        newArray = allJobs[0]
+        settingNewArray()
         setCards(pageNumber)
-        setTotalPages(Math.ceil((array.length)/howManyCardsInOnePage))
+        settingTotalPage()
+        settingNewArray()
         document.getElementById('input-card-per-page').value = howManyCardsInOnePage
     }, [pageNumber,howManyCardsInOnePage])
 
@@ -60,14 +81,17 @@ const AllJobBox = () => {
         <div className="all-job-box-main-div">
             <div className="all-job-boxes">
                 {
-                    allJobs[0].map(item => {
-                        return(
-                            <div className="div">
-                                <p>{item}</p>
-                                <Card data={oneCard} />
-                            </div>
-                        )
-                    })
+                    newArray.length >0 &&
+                        newArray.map(item => {
+                            return(
+                                <div className="div">
+                                    {
+                                        item.post !== undefined &&
+                                            <Card data={item.post} />
+                                    }                                    
+                                </div>
+                            )
+                        })
                 }
             </div>
             <div className="underline" />

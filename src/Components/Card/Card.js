@@ -2,20 +2,12 @@ import React from 'react';
 import './Card.css';
 
 const Card = (props) => {
-
-    const img = props.data[0];
-    const name = props.data[1];
-    const category = props.data[2];
-    const info = props.data[3];
-    const salary = props.data[4];
-    const experience = props.data[5];
-    const jobType = props.data[6];
-    const buttonNameArray = props.data[7];
+    const {name, category, description, experience, workType, salary, tags, image} = props.data;
 
     return (
         <div className="card">
             <div className="card-image">
-                <img src={img} alt="" />
+                <img src={image} alt="" />
             </div>
             <div className="card-header">
                 <h3>{name}</h3>
@@ -24,22 +16,22 @@ const Card = (props) => {
                 <h5>{category}</h5>
             </div>
             <div className="card-description">
-                <p>{info}</p>
+                <p>{description}</p>
             </div>
             <div className="card-experience">
                 <h4>{experience}</h4>
             </div>
             <div className="card-job-type-location">
-                <h4>{jobType}</h4>
+                <h4>{workType}</h4>
             </div>
             <div className="card-salary">
                 <h4>${salary}</h4>
             </div>
-            <div className="card-button">
+            {/* <div className="card-button">
                 {
                     buttonNameArray.map(btn => <button>{btn}</button>)
                 }
-            </div>
+            </div> */}
         </div>
     );
 };
