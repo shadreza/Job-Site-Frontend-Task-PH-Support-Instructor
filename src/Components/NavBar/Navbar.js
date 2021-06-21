@@ -5,11 +5,13 @@ import logo from '../Images/job-logo.svg';
 import searchLogo from '../Images/search-job.svg';
 import accountPic from '../Images/dummy-person.svg';
 import { Link, useLocation } from 'react-router-dom';
-import { AllGrantedJobsContext, AllJobsContext, SearchedItemContext } from '../../App';
+import { AllGrantedJobsContext, AllJobsContext, SearchedItemContext, UserContext } from '../../App';
 
 const Navbar = () => {
 
     const searched_Item = useContext(SearchedItemContext)
+    const user = useContext(UserContext)
+    const [loggedInUser , setLoggedInUser] = useState(user[0])
 
     const allPosts = useContext(AllJobsContext);
     const grantedPosts = useContext(AllGrantedJobsContext)
@@ -104,9 +106,33 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="account">
-                    <Link to="/" className="page-links">
-                        <img src={accountPic} alt="account" />
-                    </Link>
+                    {
+                        loggedInUser.name === null 
+                        ?
+                            <Link to="/login" className="page-links">
+                                <img src={accountPic} alt="account" />
+                            </Link>
+                            :loggedInUser === undefined 
+                            ?
+                                <Link to="/login" className="page-links">
+                                    <img src={accountPic} alt="account" />
+                                </Link>
+                                :
+                                loggedInUser.name !== null 
+                                ?
+                                    <Link to="/profile" className="page-links">
+                                        <p>{loggedInUser.name}</p>
+                                        <img src={loggedInUser.image} alt="account" />
+                                    </Link>
+                                    : 
+                                    <Link to="/login" className="page-links">   
+                                        <img src={accountPic} alt="account" />
+                                    </Link>
+                                
+
+
+                    }
+                    
                 </div>
             </div>
             <div id="modal">
