@@ -1,14 +1,12 @@
 import React from 'react';
-import AllJobBox from '../AllJobBox/AllJobBox';
-import Navbar from '../NavBar/Navbar';
+import AllGrantedJobs from '../AllGrantedJobs/AllGrantedJobs';
 import './Homepage.css';
 
 const Homepage = () => {
     return (
         <div>
-            <Navbar />
             <div className="hemepage-body">
-                <AllJobBox />
+                <AllGrantedJobs  />
             </div>
         </div>
     );

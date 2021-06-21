@@ -1,13 +1,12 @@
 import React , {useContext, useEffect, useState} from 'react';
-import './AllJobBox.css';
-
-import image from '../Images/dummy-person.svg';
 import Card from '../Card/Card';
 import { AllJobsContext } from '../../App';
+import './AllJobBox.css'
 
 const AllJobBox = () => {
 
     const allJobs = useContext(AllJobsContext);
+        
     const [howManyCardsInOnePage , setHowManyCardsInOnePage] = useState(20);
     const [newArray, setNewArray] = useState(allJobs[0]);
     const [totalPages , setTotalPages] = useState(Math.ceil((allJobs[0].length)/howManyCardsInOnePage))
@@ -75,10 +74,11 @@ const AllJobBox = () => {
         settingTotalPage()
         settingNewArray()
         document.getElementById('input-card-per-page').value = howManyCardsInOnePage
-    }, [pageNumber,howManyCardsInOnePage])
+    }, [pageNumber,howManyCardsInOnePage,allJobs[0]])
 
     return (
         <div className="all-job-box-main-div">
+            <h2>All Jobs Posted By Employees</h2>
             <div className="all-job-boxes">
                 {
                     newArray.length >0 &&
@@ -87,7 +87,7 @@ const AllJobBox = () => {
                                 <div className="div">
                                     {
                                         item.post !== undefined &&
-                                            <Card data={item.post} />
+                                            <Card data={[item.post , 'not admin', item._id]} />
                                     }                                    
                                 </div>
                             )

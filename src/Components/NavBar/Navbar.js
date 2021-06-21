@@ -23,10 +23,10 @@ const Navbar = () => {
                     <Link to="/" className="page-links">
                         Home
                     </Link>
-                    <Link to="/" className="page-links">
+                    <Link to="/postByEmployee" className="page-links">
                         Job Posters
                     </Link>
-                    <Link to="/" className="page-links">
+                    <Link to="/grantedPosts" className="page-links">
                         Job Seekers
                     </Link>
                 </div>

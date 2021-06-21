@@ -1,12 +1,12 @@
-.all-job-box-main-div {
-    margin: 1rem 1rem;
+.allowed-1all-job-box-main-div {
+    margin: 2rem auto ;
     border: 4px solid #583D72;
     border-radius: 12px;
     padding: 1rem;
     text-align: center;
 }
 
-.all-job-boxes {
+.allowed-1all-job-boxes {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 1rem;
@@ -17,7 +17,7 @@
     margin-top: 2rem;
 }
 
-.underline {
+.allowed-1underline {
     border: 2px solid gray;
     background: gray;
     border-radius: 50px;
@@ -25,34 +25,34 @@
     width: 100%;
 }
 
-.pagination {
+.allowed-1pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
 }
 
-.pagination * {
+.allowed-1pagination * {
     margin: auto 10px;
 }
 
-.page-action-switches {
+.allowed-1page-action-switches {
     font-size: 18px;
     font-weight: 900;
 }
 
-.page-action-switches:hover {
+.allowed-1page-action-switches:hover {
     color: orange;
     cursor: pointer;
 }
 
-#input-page-no {
+#allowed-input-page-no {
     font-size: 14px;
     padding: 5px;
     width: 45px;
 }
 
-.card-per-page {
+.allowed-1card-per-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,13 +60,13 @@
     margin-top: 20px;
 }
 
-#input-card-per-page {
+#allowed-input-card-per-page {
     font-size: 14px;
     padding: 5px;
     width: 50px;
 }
 
-.heading-for-cards-per-page {
+.allowed-1heading-for-cards-per-page {
     font-size: 16px;
     position: relative;
     top: -3px;
