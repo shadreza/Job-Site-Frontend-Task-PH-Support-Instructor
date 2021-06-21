@@ -4,3 +4,13 @@
     align-items: center;
     align-self: center;
 }
+
+#modal {
+    width: 500px;
+    height: 300px;
+    background: #000;
+}
+
+#modal p {
+    color: #fff;
+}

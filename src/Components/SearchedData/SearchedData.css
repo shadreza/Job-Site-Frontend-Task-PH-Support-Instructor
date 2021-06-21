@@ -1,0 +1,23 @@
+.mainDiv {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content:center;
+    align-items:center;
+    align-self: center;
+    grid-gap: 2rem;
+}
+
+.diV{
+    display: grid;
+    grid-template-columns: auto;
+    justify-content:center;
+    align-items:center;
+    align-self: center;
+    text-align: center;
+    grid-gap: 2rem;
+}
+
+.diV button{
+    padding: 10px;
+    font-size: 16px;
+}

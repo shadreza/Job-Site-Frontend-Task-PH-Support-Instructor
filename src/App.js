@@ -9,6 +9,7 @@ import Navbar from './Components/NavBar/Navbar';
 
 export const AllJobsContext = createContext([]);
 export const AllGrantedJobsContext = createContext([]);
+export const SearchedItemContext = createContext([]);
 
 function App() {
   
@@ -30,17 +31,21 @@ function App() {
     })
   }, [allJobs]);
 
+  const [searchedItem, setSearchedItem] = useState([]);
+
   return (
     <Router>
-      <Navbar />
       <AllGrantedJobsContext.Provider value={[allGrantedJobs, setAllGrantedJobs]}>
         <AllJobsContext.Provider value={[allJobs, setAllJobs]}>
+        <SearchedItemContext.Provider value={[searchedItem, setSearchedItem]}>
+          <Navbar />
           <Switch>
             <Route path="/grantedPosts" component={AllGrantedJobs} />
             <Route path="/allPostedPosts" component={AllJobBox} />
             <Route path="/postByEmployee" component={AddingJobPost} />
             <Route path="/" component={Homepage} />
           </Switch>
+          </SearchedItemContext.Provider>
         </AllJobsContext.Provider>
       </AllGrantedJobsContext.Provider>
     </Router>

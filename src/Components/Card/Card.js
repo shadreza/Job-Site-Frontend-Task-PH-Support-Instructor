@@ -62,6 +62,9 @@ const Card = (props) => {
             <div className="card-salary">
                 <h4>${salary}</h4>
             </div>
+            <div className="card-salary">
+                <h5>{tags}</h5>
+            </div>
             <div className="card-button">
                 {
                     fromWho !== 'admin' ? 

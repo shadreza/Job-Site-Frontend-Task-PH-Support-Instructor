@@ -72,3 +72,19 @@
     width: 3rem;
     cursor: pointer;
 }
+
+#modal {
+    color: gold;
+    display: none;
+    position: fixed;
+    right: 50%; 
+    top: 50%;
+}
+
+#modal p {
+    color: gold;
+    display: none;
+    position: fixed;
+    right: 50%; 
+    top: 50%;
+}
