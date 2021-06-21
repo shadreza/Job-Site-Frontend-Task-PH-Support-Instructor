@@ -126,7 +126,7 @@ const AllGrantedJobs = () => {
             <h2>All Jobs Granted By Admin</h2>
             <div className="filtered">
                 <strong>Tag : </strong>
-                <input type="text" onChange={(e)=>{setVal(e.target.value)}} />
+                <input type="text" placeholder='search by tag name' onChange={(e)=>{setVal(e.target.value)}} />
                 <button  onClick={()=>{searchForItem()}}>Filter</button>
             </div>
             <div className="allowed-1all-job-boxes">

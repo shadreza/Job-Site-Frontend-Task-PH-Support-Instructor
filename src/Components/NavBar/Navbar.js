@@ -37,6 +37,8 @@ const Navbar = () => {
     const setUpSearchedItem = () => {
         if(searched_Item[0].length > 0) {
             setItemSearched(searched_Item[0])
+        } else{
+            document.getElementById('search-input').value=''
         }
     }
 
